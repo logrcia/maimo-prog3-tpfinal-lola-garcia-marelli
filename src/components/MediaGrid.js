@@ -1,87 +1,19 @@
+'use client'
 import Image from "next/image"
 import Link from "next/link"
+import { useAppContext } from "@/app/contexts/AppContext"
+import PinCard from "@/components/PinCard";
+
 const MediaGrid = () => {
+  const { pins } = useAppContext();
+
   return (
     <div className="grid grid-cols-4 gap-6 justify-center">
-        <Link href={"/design/1"}>
-          <Image
-            src="/assets/poster.jpeg"
-            width={500}
-            height={300}
-            alt="prueba"
-          />
-          <h2>Título</h2>
-          <h3>Autor</h3>
-          <h3>Fecha de creación</h3>
-        </Link>
-        <article>
-          <Image
-            src="/assets/poster.jpeg"
-            width={500}
-            height={300}
-            alt="prueba"
-          />
-          <h2>Título</h2>
-          <h3>Autor</h3>
-          <h3>Fecha de creación</h3>
-        </article>
-        <article>
-          <Image
-            src="/assets/poster.jpeg"
-            width={500}
-            height={300}
-            alt="prueba"
-          />
-          <h2>Título</h2>
-          <h3>Autor</h3>
-          <h3>Fecha de creación</h3>
-        </article>
-        <article>
-          <Image
-            src="/assets/poster.jpeg"
-            width={500}
-            height={300}
-            alt="prueba"
-          />
-          <h2>Título</h2>
-          <h3>Autor</h3>
-          <h3>Fecha de creación</h3>
-        </article>
-        <article>
-          <Image
-            src="/assets/poster.jpeg"
-            width={500}
-            height={300}
-            alt="prueba"
-          />
-          <h2>Título</h2>
-          <h3>Autor</h3>
-          <h3>Fecha de creación</h3>
-        </article>
-        <article>
-          <Image
-            src="/assets/poster.jpeg"
-            width={500}
-            height={300}
-            alt="prueba"
-          />
-          <h2>Título</h2>
-          <h3>Autor</h3>
-          <h3>Fecha de creación</h3>
-        </article>
-        <article>
-          <Image
-            src="/assets/poster.jpeg"
-            width={500}
-            height={300}
-            alt="prueba"
-          />
-          <h2>Título</h2>
-          <h3>Autor</h3>
-          <h3>Fecha de creación</h3>
-        </article>
-      </div>
-  )
-}
+      {pins &&
+        pins.length > 0 &&
+        pins.map((pin) => <PinCard key={pin._id} pin={pin} />)}
+    </div>
+  );
+};
 
-export default MediaGrid
+export default MediaGrid;

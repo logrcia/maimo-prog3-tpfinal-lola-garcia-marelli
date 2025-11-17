@@ -1,7 +1,14 @@
 import DesignContainer from "@/components/DesignContainer"
-const Design = () => {
+import Navbar from "@/components/Navbar"
+
+const Design = async ({params}) => {
+  const { id } = await params
+  
   return (
-    <DesignContainer/>
+    <div>
+      <Navbar/>
+      <DesignContainer id={id} />
+    </div>
   )
 }
 
