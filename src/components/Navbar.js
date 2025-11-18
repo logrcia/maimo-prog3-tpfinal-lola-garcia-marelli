@@ -7,7 +7,6 @@ const Navbar = () => {
         <div className="flex">
             <Link href={"/boards"} className="mr-6">Boards</Link>
             <Link href={"/about"} className="mr-6">About</Link>
-            <div>Perfil</div>
         </div>
     </div>
   )

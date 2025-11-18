@@ -51,10 +51,10 @@ export const AppContextProvider = ({children}) => {
     }
   }, [])
 
-   const createBoard = async (name, description = '') => {
+   const createBoard = async (name = '') => {
         try {
-            const res = await axios.post(`${API_URL}/boards`, { name, description });
-            setBoards([...boards, res.data.board]);
+            const res = await axios.post(`http://localhost:4000/boards`, { name });
+            setBoards(prev => [...prev, res.data.board]);
             return res.data.board;
         } catch (error) {
             console.log(error);
@@ -79,6 +79,26 @@ export const AppContextProvider = ({children}) => {
       }
     }
 
+    const getPinsByCategory = useCallback(async (categoryId) => {
+    try {
+      const res = await axios.get(`http://localhost:4000/categories/${categoryId}/pins`);
+      setPins(res.data.pins);
+      return res.data.pins;
+    } catch (error) {
+      console.log(error);
+    }
+  }, [])
+
+    const addCommentToPin = async (pinId, values) => {
+  try {
+    const res = await axios.post(`http://localhost:4000/pins/${pinId}/comments`, values);
+    setPin(res.data.pin); // actualiza el pin en el estado global
+    return res.data.pin;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
     useEffect(() => {
         getAllPins()
         getAllBoards() 
@@ -98,7 +118,9 @@ export const AppContextProvider = ({children}) => {
         boards,
         createBoard,
         addPinToBoard,
-        deletePinFromBoard
+        deletePinFromBoard,
+        getPinsByCategory,
+        addCommentToPin
       }}
     >
       {children}

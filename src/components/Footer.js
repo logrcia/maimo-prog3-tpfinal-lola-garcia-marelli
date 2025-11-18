@@ -2,7 +2,7 @@
 const Footer = () => {
   return (
     <div className="bg-neutral-300 text-white">
-    <div className="mx-15 py-10 text-xl flex flex-col items-center">
+    <div className="mx-15 mt-6 py-10 text-xl flex flex-col items-center">
       <p className="mb-6 font-bold">
         © 2025 folklore fanpage. All rights to Taylor Swift & Republic Records.
         This site is a fan-made project and not affiliated with Taylor Swift.
