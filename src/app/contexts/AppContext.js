@@ -13,7 +13,7 @@ export const AppContextProvider = ({children}) => {
 
     const getAllPins = useCallback(async () => {
         try {
-            const res = await axios.get(`http://localhost:4000/pins`);
+            const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/pins`);
             setPins(res.data.pins)
         } catch (error) {
             console.log(error)
@@ -22,7 +22,7 @@ export const AppContextProvider = ({children}) => {
 
     const getOnePin = useCallback(async (id) => {
       try {
-        const res = await axios.get(`http://localhost:4000/pins/${id}`)
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/pins/${id}`)
         setPin(res.data.pin)
         return res.data.pin
       } catch (error) {
@@ -32,7 +32,7 @@ export const AppContextProvider = ({children}) => {
 
     const getCategories = useCallback(async (category) => {
     try {
-      const res = await axios.get(`http://localhost:4000/categories`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
       setCategories(res.data.categories);
       return res.data.categories;
     } catch (error) {
@@ -42,7 +42,7 @@ export const AppContextProvider = ({children}) => {
 
   const getAllBoards = useCallback(async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/boards`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/boards`);
       setBoards(res.data.boards);
       console.log(res.data.boards);
       return res.data.boards
@@ -53,7 +53,7 @@ export const AppContextProvider = ({children}) => {
 
    const createBoard = async (name = '') => {
         try {
-            const res = await axios.post(`http://localhost:4000/boards`, { name });
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/boards`, { name });
             setBoards(prev => [...prev, res.data.board]);
             return res.data.board;
         } catch (error) {
@@ -63,7 +63,7 @@ export const AppContextProvider = ({children}) => {
 
     const addPinToBoard = async (boardId, pinId) => {
       try {
-        await axios.post(`http://localhost:4000/boards/${boardId}/pins/${pinId}`);
+        await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/boards/${boardId}/pins/${pinId}`);
         getAllBoards();
       } catch (error) {
         console.log(error);
@@ -72,7 +72,7 @@ export const AppContextProvider = ({children}) => {
 
     const deletePinFromBoard = async (boardId, pinId) => {
       try {
-        await axios.delete(`http://localhost:4000/boards/${boardId}/pins/${pinId}`);
+        await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/boards/${boardId}/pins/${pinId}`);
         getAllBoards();
       } catch (error) {
         console.log(error);
@@ -81,7 +81,7 @@ export const AppContextProvider = ({children}) => {
 
     const getPinsByCategory = useCallback(async (categoryId) => {
     try {
-      const res = await axios.get(`http://localhost:4000/categories/${categoryId}/pins`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories/${categoryId}/pins`);
       setPins(res.data.pins);
       return res.data.pins;
     } catch (error) {
@@ -91,7 +91,7 @@ export const AppContextProvider = ({children}) => {
 
     const addCommentToPin = async (pinId, values) => {
   try {
-    const res = await axios.post(`http://localhost:4000/pins/${pinId}/comments`, values);
+    const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/pins/${pinId}/comments`, values);
     setPin(res.data.pin); // actualiza el pin en el estado global
     return res.data.pin;
   } catch (error) {
