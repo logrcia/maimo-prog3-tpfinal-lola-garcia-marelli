@@ -18,7 +18,7 @@ const BoardsContainer = () => {
   };
 
   return (
-    <div className="bg-pink-200">
+    <div className="bg-linear-to-br from-pink-200 to-pink-300">
       <section>
         <div className="p-10 flex justify-between items-center">
           <h1 className="text-4xl">Boards</h1>
