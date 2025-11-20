@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 
 const boardsPage = () => {
   return (
-    <div>
+    <div className="bg-linear-to-br from-pink-100 to-pink-200 mt-16">
       <Navbar/>
       <BoardsContainer/>
       <Footer/>

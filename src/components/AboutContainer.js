@@ -3,7 +3,7 @@ import Image from "next/image";
 const AboutContainer = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-10">
-      <div className="bg-linear-to-br from-pink-200 to-pink-300 rounded-3xl p-12 shadow-2xl max-w-4xl w-full">
+      <div className="bg-pink-300 rounded-3xl p-12 shadow-2xl max-w-4xl w-full">
         <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
 
           <div className="shrink-0">

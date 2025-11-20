@@ -25,12 +25,12 @@ const HomeContainer = () => {
   }, []);
 
   return (
-    <div className="mx-10">
-      <section className="flex justify-between my-6">
-        <button onClick={() => categoryClick("All")} className={`${selectedCategory === "All" ? "border rounded-2xl border-neutral-800" : "hover:bg-gray-300 rounded-2xl"}`}>All</button>
+    <div className="mx-10 px-4 md:px-10">
+      <section className="flex w-full justify-between gap-3 overflow-x-auto py-6 scrollbar-hide ">
+        <button onClick={() => categoryClick("All")} className={`${selectedCategory === "All" ? "border rounded-2xl border-neutral-800 p-2" : "hover:bg-pink-200 p-2 rounded-2xl"}`}>All</button>
         {categories.map((cat, i) => (
           <div key={cat._id}>
-            <button onClick={() => categoryClick(cat)} className={`${selectedCategory == `${cat.name}` ? "border rounded-2xl border-neutral-800" : "hover:bg-gray-300 rounded-2xl"}`}>{cat.name}</button>
+            <button onClick={() => categoryClick(cat)} className={`${selectedCategory === `${cat._id}` ? "border rounded-2xl border-neutral-800 p-2" : "hover:bg-pink-200 p-2 rounded-2xl"}`}>{cat.name}</button>
           </div>
         ))}
       </section>

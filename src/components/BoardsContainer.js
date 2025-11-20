@@ -18,7 +18,7 @@ const BoardsContainer = () => {
   };
 
   return (
-    <div className="bg-linear-to-br from-pink-200 to-pink-300">
+    <div>
       <section>
         <div className="p-10 flex justify-between items-center">
           <h1 className="text-4xl">Boards</h1>
@@ -32,13 +32,13 @@ const BoardsContainer = () => {
         {boards.map((board) => (
           <div
             key={board._id}
-            className="p-10 m-10 rounded-xl shadow-2xl bg-white/95 backdrop-blur-sm "
+            className="p-4 md:p-6 lg:p-10 m-4 md:m-6 lg:m-10 rounded-xl shadow-2xl bg-white/95 backdrop-blur-sm"
           >
-            <h2 className="text-3xl font-bold mb-2">{board.name}</h2>
-            <p className="text-lg text-neutral-500 mb-6">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">{board.name}</h2>
+            <p className="text-sm md:text-base lg:text-lg text-neutral-500 mb-4 md:mb-6">
               saved {board.pins.length} pins
             </p>
-            <div className="flex flex-row overflow-x-auto gap-6">
+            <div className="flex flex-row overflow-x-auto gap-3 md:gap-4 lg:gap-6 pb-2">
               {board.pins.map((pin, index) => (
                 <div key={index} className="relative group"> 
                   <button
@@ -49,7 +49,7 @@ const BoardsContainer = () => {
                   </button>
                 <Link href={`/design/${pin._id}`} className="mr-10">
                   <div className="bg-white rounded-xl shadow-md overflow-hidden transition ease-in hover:scale-105  hover:shadow-xl">
-                    <div className=" relative overflow-hidden w-[400px] h-[300px]">
+                    <div className="relative overflow-hidden w-[200px] h-[150px] sm:w-[250px] sm:h-[190px] md:w-[300px] md:h-[225px] lg:w-[400px] lg:h-[300px]">
                       <Image
                         src={`/assets/${pin.image}`}
                         width={500}

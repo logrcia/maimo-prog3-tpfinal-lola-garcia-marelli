@@ -5,17 +5,19 @@ import { useAppContext } from "@/app/contexts/AppContext";
 const FormConatiner = ({ pinId, onSubmitSuccess }) => {
   const { addCommentToPin } = useAppContext();
 
+
   return (
     <Formik
       initialValues={{ user: "", comment: "" }}
       onSubmit={async (values, { resetForm }) => {
         await addCommentToPin(pinId, values);
         resetForm();
+        setShowSuccessModal(true);
         onSubmitSuccess && onSubmitSuccess();
       }}
     >
       {() => (
-        <Form className="flex flex-col gap-3 bg-neutral-100 p-4 rounded-2xl mt-4">
+        <Form className="flex flex-col gap-3 bg-neutral-100 p-4 rounded-2xl mt-4 ">
           <Field
             name="user"
             placeholder="User"
@@ -36,6 +38,7 @@ const FormConatiner = ({ pinId, onSubmitSuccess }) => {
         </Form>
       )}
     </Formik>
+    
   );
 };
 
